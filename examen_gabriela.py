@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class receta(ABC):
     def __init__(self, nombre, ingredientes, pasos):
         self.nombre = nombre  # nombre
-        self.i = ingredientes  # ingredientes
+        self.ingredientes = ingredientes  # ingredientes
         self.p = pasos  # pasos
 
     @abstractmethod
@@ -17,7 +17,7 @@ class recetasVegetarianas(receta):
     def mostrar(self):
         print(f"Receta vegetariana: {self.nombre}")
         print("Ingredientes:")
-        for ingrediente in self.ingredientes: ###################
+        for ingrediente in self.ingredientes: 
             print(f"- {ingrediente}")
         print("Pasos:")
         for paso in self.pasos:
@@ -54,19 +54,20 @@ def principal():
     receta1 = recetasVegetarianas("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
     receta2 = recetasNoVegetarianas("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
     
-    # Duplicación de código al imprimir
-    print("== Mostrar recetas ==")
-    utilidades.imprimir_receta(receta1)
-    utilidades.imprimir_receta(receta2)
-
-    # Código duplicado para mostrar ingredientes
-    print("Ingredientes de Ensalada César:")
-    for ingrediente in receta1.ingredientes:
-        print(f"* {ingrediente}")
+    elegir_receta = int(input("""que receta quieres elegir?:
+                              1.receta vegetariana
+                              2.receta no vegetariana"""))
     
-    print("Ingredientes de Pollo al horno:")
-    for ingrediente in receta2.ingredientes:
-        print(f"* {ingrediente}")
+    #hacemos un if, elif que pida al usuario la receta que quiera crear para eliminar las sentencias duplicadas.
+    if elegir_receta == 1 :
+        
+        print("Ingredientes de Ensalada César:")
+        for ingrediente in receta1.ingredientes:
+            print(f"* {ingrediente}")
+    elif elegir_receta == 2 : 
+        print("Ingredientes de Pollo al horno:")
+        for ingrediente in receta2.ingredientes:
+            print(f"* {ingrediente}")
 
 
 # Ejecutar el programa
